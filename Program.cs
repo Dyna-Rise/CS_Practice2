@@ -90,10 +90,28 @@ class Program
                     return i;
                 }
             }
+            //for文をループし終わっても該当するものがなければ-1を返す
             return -1;
         }
 
-
+        //該当するIDの中身を更新・再設定
+        public void UpdateTask(int id, string taskName, string limitTime, string priority)
+        {
+            //該当IDが配列の中にあればその番号、なければ-1を返す
+            int index = FindTaskIndexById(id);
+            if (index != -1) //該当IDが見つかった
+            {
+                //それぞれのプロパティを引数の内容で更新
+                tasks[index].TaskName = taskName;
+                tasks[index].LimitTime = limitTime;
+                tasks[index].Priority = priority;
+                Console.WriteLine("タスクが更新されました");
+            }
+            else //indexが-1だった場合、該当なし
+            {
+                Console.WriteLine("該当IDが見つかりません");
+            }
+        }
 
 
 
