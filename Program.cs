@@ -39,6 +39,8 @@ class Program
                 //次回に備える
                 taskCount++; //タスクの登録数を1件プラス
                 nextId++; //タスクのID番号も1プラス
+
+                Console.WriteLine("登録しました");
             }
             else
             {
@@ -153,13 +155,42 @@ class Program
             {
                 case 1:
                     //追加のメソッド処理
+                    Console.Write("タスク内容を入力：");
+                    string taskName = Console.ReadLine();
+
+                    Console.Write("期限を入力(yyyy/MM/dd)：");
+                    string limitTime = Console.ReadLine();
+
+                    Console.Write("優先度を入力(高/中/低)：");
+                    string priority = Console.ReadLine();
+
+                    //ユーザーに入力させた3つの変数の情報を使ってAddTaskメソッドを発動→配列tasksにタスクが登録
+                    tm.AddTask(taskName, limitTime, priority);
                     break;
+
                 case 2:
                     //削除のメソッド処理
+                    Console.Write("削除するタスクIDを入力：");
+                    //入力された文字列を整数に型変換してから変数idに代入
+                    int id = int.Parse(Console.ReadLine());
+                    tm.DeleteTask(id);
                     break;
+
                 case 3:
                     //再設定のメソッド処理
+                    Console.Write("再設定するタスクIDを入力：");
+                    //入力された文字列を整数に型変換してから変数idに代入
+                    int upId = int.Parse(Console.ReadLine());
+                    Console.Write("タスク内容を入力：");
+                    string upTaskName = Console.ReadLine();
+                    Console.Write("期限を入力(yyyy/MM/dd)：");
+                    string upLimitTime = Console.ReadLine();
+                    Console.Write("優先度を入力(高/中/低)：");
+                    string upPriority = Console.ReadLine();
+
+                    tm.UpdateTask(upId, upTaskName, upLimitTime, upPriority);
                     break;
+
                 case 4:
                     //一覧表示のメソッド処理
                     tm.DisplayTask();
