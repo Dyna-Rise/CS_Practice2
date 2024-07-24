@@ -131,6 +131,47 @@ class Program
 
     static void Main(string[] args)
     {
+        int maxTask = 10; //実体化されるTaskManagerの配列の上限数
+        bool exit = false; //アプリを終了するためのステータス（trueで終了）
+        int choice; //プレイヤーが選んだ番号
 
+        TaskManager tm = new TaskManager(maxTask);
+
+        //変数exit（終了ステータス）がfalseの間はずっとループ
+        while (exit == false)
+        {
+            Console.WriteLine("行動を数字で選択してください");
+            Console.WriteLine("1:タスクを追加");
+            Console.WriteLine("2:タスクを削除");
+            Console.WriteLine("3:タスクを再設定");
+            Console.WriteLine("4:タスクの一覧を表示");
+            Console.WriteLine("5:アプリ終了");
+
+            choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    //追加のメソッド処理
+                    break;
+                case 2:
+                    //削除のメソッド処理
+                    break;
+                case 3:
+                    //再設定のメソッド処理
+                    break;
+                case 4:
+                    //一覧表示のメソッド処理
+                    tm.DisplayTask();
+                    break;
+                case 5:
+                    //終了処理
+                    exit = true;
+                    break;
+                default:
+                    Console.WriteLine("数字が無効です");
+                    break;
+            }
+        }
     }
 }
