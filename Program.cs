@@ -15,23 +15,29 @@ class Program
     class TaskManager
     {
         private Task[] tasks; //タスクの配列
-        private int taskCount; //タスクの合計数
-        private int nextId; //タスクのリストの余りを探るフィールド
+        private int taskCount; //登録されているタスクの合計数
+        private int nextId; //タスク番号の連番
 
         //TaskManagerのコンストラクタ（実体化メソッド）を改造
         public TaskManager(int maxTasks)
         {
             tasks = new Task[maxTasks]; //実体化する際に引数に与えた数だけタスクを管理できるマネージャーとして生成されるようにする
-            taskCount = 0;
+            //taskCount = 0;
             nextId = 1;
         }
 
-        //リストにタスクを追加するメソッド
+        //配列にタスクを追加するメソッド
         public void AddTask(string taskName, string limitTime, string priority)
         {
+            //タスクの登録数(taskCount)が配列の要素数(tasks.Length)を下回っていたら追加が可能
             if (taskCount < tasks.Length)
             {
-                //タスクを配列に追加してtaskCountを引き上げる
+                //タスクを配列に追加してtaskCountとnextIdを引き上げる
+                //新しいTaskクラスの生成を右辺で行い、左辺（配列）に代入
+                tasks[taskCount] = new Task { Id = nextId, TaskName = taskName, LimitTime = limitTime, Priority = priority };
+
+                taskCount++;
+                nextId++;
 
             }
             else
