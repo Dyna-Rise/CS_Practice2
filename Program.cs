@@ -53,6 +53,28 @@ class Program
             //配列の各Idに一致するものがないかチェックして
             //あれば該当の配列番号、なければ-1を取得
             int index = FindTaskIndexById(id);
+            if (index != -1) //indexが-1でなければ削除
+            {
+                //該当の配列を「なし」にする nullは「ないを明示するデータ」
+                tasks[index] = null;
+
+                //nullになった分だけデータを詰める作業
+                for (int i = index; i < taskCount - 1; i++)
+                {
+                    tasks[i] = tasks[i + 1];
+                }
+                //最後尾のデータをnullにする
+                tasks[taskCount - 1] = null;
+
+                //削除が完了したので登録件数を1件マイナス
+                taskCount--;
+                Console.WriteLine("タスクが削除されました");
+            }
+            else //indexが-1だったら該当なし
+            {
+                Console.WriteLine("該当のIDはありません");
+            }
+
         }
 
         //配列の各Idに引数と一致するものがないかチェックして
