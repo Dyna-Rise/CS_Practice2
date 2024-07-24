@@ -113,7 +113,18 @@ class Program
             }
         }
 
-
+        //管理しているタスクを列挙するメソッド
+        public void DisplayTask()
+        {
+            Console.WriteLine("タスク一覧");
+            for (int i = 0; i < taskCount; i++)
+            {
+                Console.Write("ID:" + tasks[i].Id + " ");
+                Console.Write("内容:" + tasks[i].TaskName + " ");
+                Console.Write("期限:" + tasks[i].LimitTime + " ");
+                Console.WriteLine("優先度:" + tasks[i].Priority);
+            }
+        }
 
     }
 
