@@ -1,5 +1,6 @@
 ﻿using System;
 
+//メインのクラス
 class Program
 {
     //個別のタスクを表現するクラス
